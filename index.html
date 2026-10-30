@@ -9,116 +9,244 @@
     <link rel="ICON" href="https://erp.saitm.ac.in/loginpageContent/assets/images/saitm-favicon.jpg"
         type="image/x-icon">
 </head>
-<style>
-    * {
+/* ==========================================================================
+   Global Reset & Base Styles
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
-:root {
-    --bg: #f3f7fb;
-    --primary: #26a15d;
-    --secondary: #2d2872;
-    --accent: #e8f1ff;
-    --text: #020d0f;
-    --muted: #a9acaf;
-    --white: #b6b9d4;
-    --shadow: rgba(22, 61, 122, 0.15);
+html {
+    scroll-behavior: smooth;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #f0f4f8;
 }
 
 body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(135deg, #f4f8ff, #dfeeff);
-    color: var(--text);
+    min-height: 100vh;
+    background-color: #0b132b;
+    /* Dark base background */
+    /* Multi-layered radial gradients creating vibrant soft circles in blue, green, and yellow */
+    background-image: 
+        radial-gradient(circle at 15% 15%, rgba(62, 138, 201, 0.35) 0%, transparent 40%),
+        radial-gradient(circle at 85% 25%, rgba(46, 204, 113, 0.25) 0%, transparent 35%),
+        radial-gradient(circle at 50% 75%, rgba(241, 196, 15, 0.2) 0%, transparent 45%),
+        linear-gradient(135deg, #0b132b 0%, #1c2541 50%, #0b132b 100%);
+    background-attachment: fixed;
     line-height: 1.6;
+    padding: 20px;
 }
 
+/* ==========================================================================
+   Header & Navigation Layout
+   ========================================================================== */
 header {
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    color: var(--white);
-    padding: 30px 20px 24px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     text-align: center;
-    box-shadow: 0 6px 18px var(--shadow);
 }
 
 header h1 {
-    margin: 0 0 16px;
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(90deg, #3e8ac9, #2ecc71, #f1c40f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
+/* Flexbox container for nav elements */
 header nav {
     display: inline-block;
-    margin: 0 10px;
-}
-
-header nav a,
-.site-footer a,
-main a {
-    color: var(--white);
-    text-decoration: none;
-    font-weight: 600;
+    margin: 6px 8px;
 }
 
 header nav a {
-    background: rgba(255, 255, 255, 0.12);
-    padding: 8px 14px;
-    border-radius: 20px;
     display: inline-block;
+    padding: 10px 18px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #e0e6ed;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.3s ease;
 }
 
-main {
-    max-width: 1000px;
-    margin: 30px auto;
-    padding: 0 20px 40px;
+header nav a:hover {
+    background: #3e8ac9;
+    color: #ffffff;
+    border-color: #3e8ac9;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(62, 138, 201, 0.4);
 }
 
-main > a {
-    display: inline-block;
-    margin-bottom: 24px;
-    background: var(--secondary);
-    color: var(--white);
-    padding: 12px 18px;
-    border-radius: 10px;
-    box-shadow: 0 8px 20px rgba(29, 94, 184, 0.2);
+/* Section inside Header (About) */
+#about {
+    margin-top: 25px;
+    padding: 20px;
+    text-align: left;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
 }
 
-section {
-    background: var(--white);
-    padding: 22px 24px;
-    border-radius: 16px;
-    box-shadow: 0 10px 25px rgba(20, 30, 50, 0.08);
-    margin-bottom: 24px;
-}
-
-section h2 {
-    margin-top: 0;
-    color: var(--primary);
+#about h2 {
     font-size: 1.8rem;
+    color: #2ecc71;
+    margin-bottom: 12px;
 }
 
-section p {
-    margin: 0;
-    font-size: 1.05rem;
-    color: var(--text);
+#about p {
+    font-size: 1rem;
+    color: #d1d5db;
 }
 
+#about a {
+    color: #3e8ac9;
+    transition: color 0.2s ease;
+}
+
+#about a:hover {
+    color: #f1c40f;
+}
+
+/* ==========================================================================
+   Main Content Layout
+   ========================================================================== */
+main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+/* Gallery & Media Styles */
+main img, 
+main video {
+    border-radius: 14px;
+    object-fit: cover;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+main img:hover, 
+main video:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+}
+
+main img {
+    width: calc(33.33% - 14px);
+    min-width: 280px;
+    height: 220px;
+}
+
+main video {
+    max-width: 100%;
+    margin-top: 10px;
+}
+
+/* Programs Section Card */
+.programs {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 30px;
+    margin-top: 20px;
+}
+
+.programs h2 {
+    color: #f1c40f;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    border-bottom: 2px solid rgba(241, 196, 15, 0.3);
+    padding-bottom: 8px;
+}
+
+.programs ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px;
+    padding: 0;
+}
+
+.programs li {
+    background: rgba(255, 255, 255, 0.07);
+    padding: 12px 18px;
+    border-radius: 8px;
+    border-left: 4px solid #3e8ac9;
+    font-weight: 500;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.programs li:hover {
+    transform: translateX(5px);
+    border-left-color: #2ecc71;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
 .site-footer {
-    background: #0d2350;
-    color: var(--white);
     text-align: center;
-    padding: 18px 20px;
+    padding: 20px;
+    background: rgba(11, 19, 43, 0.8);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
 }
 
 .site-footer p {
-    margin: 0 0 8px;
+    font-size: 0.95rem;
+    color: #a0aec0;
+    margin-bottom: 8px;
 }
 
 .site-footer a {
-    color: #d9ebff;
+    color: #2ecc71;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: color 0.2s ease;
 }
 
+.site-footer a:hover {
+    color: #f1c40f;
+    text-decoration: underline;
+}
 
-</style>
+/* ==========================================================================
+   Responsive Adjustments
+   ========================================================================== */
+@media (max-width: 768px) {
+    main img {
+        width: 100%;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    header nav a {
+        display: block;
+        margin: 5px 0;
+    }
+}
 
 <body>
     <header>
